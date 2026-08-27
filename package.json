@@ -7,9 +7,9 @@
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node api.js && next dev",
+    "build": "node api.js && next build",
+    "start": "node api.js && next start",
     "typecheck": "tsc --noEmit",
     "test": "TZ=UTC node --import tsx --test $(find src -name '*.test.ts' -print)",
     "qa:visual-baseline": "node scripts/capture-visual-baselines.mjs",
@@ -18,7 +18,7 @@
     "validate:env:server": "tsx scripts/validate-env.ts",
     "validate:env:frontend": "tsx scripts/validate-frontend-env.ts",
     "analyze": "ANALYZE=true next build",
-    "validate:config": "node -e \"['package.json','tsconfig.json'].forEach(f=>{try{const d=JSON.parse(require('fs').readFileSync(f,'utf8'));console.log('✓',f,'is valid JSON');}catch(e){console.error('✗',f,'validation failed:',e.message);process.exit(1);}})\"",
+    "validate:config": "node -e \"['package.json','tsconfig.json'].forEach(f=>{try{const d=JSON.parse(require('fs').readFileSync(f,'utf8'));console.log('\u2713',f,'is valid JSON');}catch(e){console.error('\u2717',f,'validation failed:',e.message);process.exit(1);}})\"",
     "prepare": "husky"
   },
   "dependencies": {
